@@ -1,0 +1,19 @@
+# NuGet Packages can create problems
+packages/
+
+# Build Folders
+[Bb]in/
+[Oo]bj/
+ScatterSchool.Tests/
+
+# User-specific files
+*.mdf
+*.suo
+*.user
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+
+muster.Tests/

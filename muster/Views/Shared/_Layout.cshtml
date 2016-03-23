@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html ng-app="musterApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <script type="text/javascript">
+        //  Module
+        var musterApp = angular.module('musterApp', ['ngRoute']);
+
+        //  Routes
+        musterApp.config(function($routeProvider) {
+            $routeProvider
+                .when('/', {
+                    templateUrl: '/Page/Camps',
+                    controller: 'HomeCtrl'
+                }).when('/Camp/:campIndex', {
+                    templateUrl: '/Page/Monitor',
+                    controller: 'CampCtrl'
+                });
+        });
+
+        //  Services
+        musterApp.service('campService',
+            function() {
+                this.camps = [
+                    { name: 'sun', mustering: false },
+                    { name: 'moon', mustering: false },
+                    { name: 'earth', mustering: true },
+                    { name: 'potato', mustering: false },
+                    { name: 'carrot', mustering: false },
+                    { name: 'turnip', mustering: false },
+                    { name: 'banana', mustering: false },
+                    { name: 'orange', mustering: true },
+                    { name: 'apple', mustering: false }
+                ];
+            });
+
+        //  Controllers
+        musterApp.controller('HomeCtrl', [
+            '$scope', 'campService', function($scope, campService) {
+                $scope.camps = campService.camps;
+
+                $scope.goToMonitor = function (camp) {
+                    window.location.href = '/Muster/Monitor#Camp/' + $scope.camps.indexOf(camp);
+                }
+            }
+        ]).controller('CampCtrl', [
+            '$scope', '$routeParams', 'campService', function ($scope, $routeParams, campService) {
+                $scope.camps = campService.camps;
+                $scope.selectedCamp = $scope.camps[$routeParams.campIndex];
+
+            }
+        ]);
+    </script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Muster", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Muster")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+<div class="container body-content">
+    @RenderBody()
+    <hr/>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    </footer>
+</div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
