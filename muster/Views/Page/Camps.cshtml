@@ -4,12 +4,12 @@
 <h1>Camps Page</h1>
 <div>
     <div ng-repeat="camp in camps">
-        <div ng-click="goToMonitor(camp)" style="cursor: pointer;" class="campSquare" ng-class="{{camp.mustering}} ? 'musteringSquare' : ''">
+        <div ng-click="goToMonitor(camp)" style="cursor: pointer;" class="campSquare" ng-class="{{camp.Mustering}} ? 'musteringSquare' : ''">
             <div class="campSquareContent">
                 <div class="table">
                     <div class="table-cell">
-                        <h2>{{camp.name}}</h2>
-                        <h4>{{camp.mustering ? 'Actively Mustering' : 'Click To Monitor'}}</h4>
+                        <h2>{{camp.Name}}</h2>
+                        <h4>{{camp.Mustering ? 'Actively Mustering' : 'Click To Monitor'}}</h4>
                     </div>
                 </div>
             </div>

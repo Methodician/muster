@@ -29,5 +29,7 @@ namespace muster.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<muster.Models.Camp> Camps { get; set; }
     }
 }

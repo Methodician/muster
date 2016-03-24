@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Muster Central</title>
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
     <script type="text/javascript">
@@ -18,24 +18,14 @@
                     controller: 'HomeCtrl'
                 }).when('/Camp/:campIndex', {
                     templateUrl: '/Page/Monitor',
-                    controller: 'CampCtrl'
+                    controller: 'MonitorCtrl'
                 });
         });
 
         //  Services
         musterApp.service('campService',
-            function() {
-                this.camps = [
-                    { name: 'sun', mustering: false, musters: {} },
-                    { name: 'moon', mustering: false, musters: {} },
-                    { name: 'earth', mustering: true, musters: {} },
-                    { name: 'potato', mustering: false, musters: {} },
-                    { name: 'carrot', mustering: false, musters: {} },
-                    { name: 'turnip', mustering: false, musters: {} },
-                    { name: 'banana', mustering: false, musters: {} },
-                    { name: 'orange', mustering: true, musters: {} },
-                    { name: 'apple', mustering: false, musters: {} }
-                ];
+            function () {
+                this.camps = @Html.Raw(Json.Encode(Model));
             });
 
         //  Controllers
@@ -43,15 +33,24 @@
             '$scope', 'campService', function($scope, campService) {
                 $scope.camps = campService.camps;
 
-                $scope.goToMonitor = function (camp) {
+                $scope.goToMonitor = function(camp) {
                     window.location.href = '/Muster/Monitor#Camp/' + $scope.camps.indexOf(camp);
-                }
+                };
             }
-        ]).controller('CampCtrl', [
-            '$scope', '$routeParams', 'campService', function ($scope, $routeParams, campService) {
+        ]).controller('MonitorCtrl', [
+            '$scope', '$routeParams', '$http', 'campService', function($scope, $routeParams, $http, campService) {
                 $scope.camps = campService.camps;
                 $scope.selectedCamp = $scope.camps[$routeParams.campIndex];
 
+                $scope.changeCamps = function(index) {
+                    window.location.href = '/Muster/Monitor#Camp/' + index;
+                };
+
+                $scope.startMuster = function(camp) {
+                    alert('Mustering camp: ' + camp.Name);
+                    camp = $http.get('/Muster/StartMuster?campId=' + camp.Id);
+                    $scope.selectedCamp = camp;
+                };
             }
         ]);
     </script>
@@ -68,7 +67,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Muster", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Camp Musterly", "Index", "Muster", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

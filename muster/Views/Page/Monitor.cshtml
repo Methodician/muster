@@ -3,15 +3,20 @@
     Layout = null;
 }
 
-<h1>Monitor Page</h1>
+<h1>Monitoring Camp: {{selectedCamp.Name}}</h1>
+<select id="campSelection" ng-model="index" ng-change="changeCamps(index)">
+    <option ng-repeat="camp in camps" value="{{camps.indexOf(camp)}}">{{camp.Name}}</option>
+</select><label for="campSelection">Change camps?</label>
+<button class="btn btn-success" ng-hide="{{selectedCamp.Mustering}}" ng-click="startMuster(selectedCamp)">Start Mustering</button>
+<button class="btn btn-danger" ng-show="{{selectedCamp.Mustering}}" ng-click="stopMuster(selectedCamp)">Stop Mustering</button>
 <div>
     <label>Between: </label>
-    <select id="from" ng-change="">
+    <select id="from" @*ng-change=""*@>
         <option>1:30 pm</option>
         <option>2:00 pm</option>
     </select>
     - and -
-    <select id="to" ng-change="">
+    <select id="to" @*ng-change=""*@>
         <option>1:30 pm</option>
         <option>2:00 pm</option>
     </select>
@@ -33,4 +38,7 @@
         <option>1st</option>
         <option>2nd</option>
     </select>
+</div>
+<div ng-show="camp.Mustering">
+    
 </div>

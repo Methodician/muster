@@ -159,15 +159,35 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CampController.cs" />
     <Compile Include="Controllers\MusterController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603242022487_init.cs" />
+    <Compile Include="Migrations\201603242022487_init.Designer.cs">
+      <DependentUpon>201603242022487_init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603242033367_Camp_and_Musters.cs" />
+    <Compile Include="Migrations\201603242033367_Camp_and_Musters.Designer.cs">
+      <DependentUpon>201603242033367_Camp_and_Musters.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603242210367_addActiveMusterToCamp.cs" />
+    <Compile Include="Migrations\201603242210367_addActiveMusterToCamp.Designer.cs">
+      <DependentUpon>201603242210367_addActiveMusterToCamp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603242219420_test.cs" />
+    <Compile Include="Migrations\201603242219420_test.Designer.cs">
+      <DependentUpon>201603242219420_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Camp.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MusterEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -179,6 +199,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-resource.js" />
+    <Content Include="Scripts\angular-resource.min.js" />
     <Content Include="Scripts\angular-route.js" />
     <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular.js" />
@@ -187,6 +209,7 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-resource.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -235,6 +258,11 @@
     <Content Include="Views\Muster\Monitor.cshtml" />
     <Content Include="Views\Page\Camps.cshtml" />
     <Content Include="Views\Page\Monitor.cshtml" />
+    <Content Include="Views\Camp\Create.cshtml" />
+    <Content Include="Views\Camp\Delete.cshtml" />
+    <Content Include="Views\Camp\Details.cshtml" />
+    <Content Include="Views\Camp\Edit.cshtml" />
+    <Content Include="Views\Camp\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -245,6 +273,20 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201603242022487_init.resx">
+      <DependentUpon>201603242022487_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603242033367_Camp_and_Musters.resx">
+      <DependentUpon>201603242033367_Camp_and_Musters.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603242210367_addActiveMusterToCamp.resx">
+      <DependentUpon>201603242210367_addActiveMusterToCamp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603242219420_test.resx">
+      <DependentUpon>201603242219420_test.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
