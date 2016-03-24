@@ -26,15 +26,15 @@
         musterApp.service('campService',
             function() {
                 this.camps = [
-                    { name: 'sun', mustering: false },
-                    { name: 'moon', mustering: false },
-                    { name: 'earth', mustering: true },
-                    { name: 'potato', mustering: false },
-                    { name: 'carrot', mustering: false },
-                    { name: 'turnip', mustering: false },
-                    { name: 'banana', mustering: false },
-                    { name: 'orange', mustering: true },
-                    { name: 'apple', mustering: false }
+                    { name: 'sun', mustering: false, musters: {} },
+                    { name: 'moon', mustering: false, musters: {} },
+                    { name: 'earth', mustering: true, musters: {} },
+                    { name: 'potato', mustering: false, musters: {} },
+                    { name: 'carrot', mustering: false, musters: {} },
+                    { name: 'turnip', mustering: false, musters: {} },
+                    { name: 'banana', mustering: false, musters: {} },
+                    { name: 'orange', mustering: true, musters: {} },
+                    { name: 'apple', mustering: false, musters: {} }
                 ];
             });
 

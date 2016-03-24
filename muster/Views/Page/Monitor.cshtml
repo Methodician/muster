@@ -4,4 +4,33 @@
 }
 
 <h1>Monitor Page</h1>
-<h2>Selected camp: {{selectedCamp}}</h2>
+<div>
+    <label>Between: </label>
+    <select id="from" ng-change="">
+        <option>1:30 pm</option>
+        <option>2:00 pm</option>
+    </select>
+    - and -
+    <select id="to" ng-change="">
+        <option>1:30 pm</option>
+        <option>2:00 pm</option>
+    </select>
+    <label for="shift">Shift:</label>
+    <select id="shift">
+        <option>--All--</option>
+        <option>1st</option>
+        <option>2nd</option>
+    </select>
+    <label for="building">Building:</label>
+    <select id="building">
+        <option>--All--</option>
+        <option>1st</option>
+        <option>2nd</option>
+    </select>
+    <label for="floor">Floor:</label>
+    <select id="floor">
+        <option>--All--</option>
+        <option>1st</option>
+        <option>2nd</option>
+    </select>
+</div>
